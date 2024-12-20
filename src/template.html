@@ -1,11 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Game</title>
+  </head>
+  <body>
+    <header>
+      <h1>Quiz Game</h1>
+    </header>
+
+    <main>
+      <section id="game">
+        <article id="game-info">
+          <div id="progress-bar">
+            <div class="progress-bar-element"></div>
+            <div class="progress-bar-element"></div>
+            <div class="progress-bar-element"></div>
+            <div class="progress-bar-element"></div>
+            <div class="progress-bar-element"></div>
+            <div class="progress-bar-element"></div>
+            <div class="progress-bar-element"></div>
+            <div class="progress-bar-element"></div>
+            <div class="progress-bar-element"></div>
+            <div class="progress-bar-element"></div>
+          </div>
+          <nav>
+            <ul>
+              <li><button id="next-question" disabled>Next</button></li>
+              <li><button id="quit-game">Quit</button></li>
+            </ul>
+          </nav>
+        </article>
+        <article id="question-container">
+          <p id="question">
+            This is the question of the round. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Beatae asperiores, nihil dolorum
+            tenetur doloremque consectetur ad blanditiis. Animi nulla sequi,
+            asperiores voluptatibus in labore, suscipit facere tenetur veniam
+            nam praesentium?
+          </p>
+        </article>
+        <article id="answer-options">
+          <button class="option 1">Option 1</button>
+          <button class="option 2">Option 2</button>
+          <button class="option 3">Option 3</button>
+          <button class="option 4">Option 4</button>
+        </article>
+      </section>
+    </main>
+  </body>
 </html>
