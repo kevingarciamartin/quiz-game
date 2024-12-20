@@ -1,6 +1,6 @@
-import './assets/styles/reset.css'
-import './assets/styles/style.css'
+import '../styles/reset.css'
+import '../styles/style.css'
 
 export function app() {
-    
+
 }
