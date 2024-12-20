@@ -13,8 +13,8 @@
   --clr-background: var(--clr-blue-100);
   --clr-border: var(--clr-neutral-400);
   --clr-text: var(--clr-neutral-100);
-  --clr-success: var(--clr-green);
-  --clr-fail: var(--clr-red);
+  --clr-correct: var(--clr-green);
+  --clr-incorrect: var(--clr-red);
 }
 
 body {
@@ -52,13 +52,34 @@ main {
 
 h1 {
   font-family: "Courier New", Courier, monospace;
-  font-size: clamp(2rem, 3vw + 0.5rem, 5rem);
+  font-size: 4rem;
   margin-bottom: 0;
   text-align: center;
+  transition: font-size 200ms ease;
 }
 
-main:has(#game) {
+main {
   align-self: center;
+}
+
+#title-screen {
+  display: flex;
+  justify-content: center;
+
+  #play {
+    background-color: var(--clr-accent);
+    border: 1px solid var(--clr-border);
+    border-radius: 1rem;
+    font-size: clamp(2rem, 2vw + 0.5rem, 3rem);
+    padding: 1rem 2rem;
+    transition: background-color 200ms ease, padding 500ms ease;
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--clr-yellow);
+      padding: 1.5rem 3rem;
+    }
+  }
 }
 
 #game {
@@ -90,16 +111,16 @@ main:has(#game) {
         aspect-ratio: 1;
         transition: background-color 200ms ease, transform, 200ms ease;
 
-        &.success {
-          background-color: var(--clr-success);
+        &.correct {
+          background-color: var(--clr-correct);
         }
 
-        &.fail {
-          background-color: var(--clr-fail);
+        &.incorrect {
+          background-color: var(--clr-incorrect);
         }
 
-        &.success,
-        &.fail {
+        &.correct,
+        &.incorrect {
           transform: scale(2.5);
           border: 1px solid var(--clr-border);
         }
@@ -138,6 +159,7 @@ main:has(#game) {
 
   #answer-options {
     display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 0.5rem;
 
     .option {
@@ -157,12 +179,12 @@ main:has(#game) {
         outline: 2px solid var(--clr-yellow);
       }
 
-      &.success {
-        background-color: var(--clr-success);
+      &.correct {
+        background-color: var(--clr-correct);
       }
 
-      &.fail {
-        background-color: var(--clr-fail);
+      &.incorrect {
+        background-color: var(--clr-incorrect);
       }
     }
   }
