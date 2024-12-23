@@ -151,8 +151,10 @@ main {
     border: 1px solid var(--clr-border);
     border-radius: 1rem;
     padding: 1rem;
+    width: 100%;
 
     #question {
+      text-align: center;
       margin: 0;
     }
   }
