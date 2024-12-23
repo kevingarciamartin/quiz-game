@@ -1,3 +1,5 @@
+import { sortArray } from "./util";
+
 export const game = (() => {
   let quizData = [];
   let round = 0;
@@ -5,7 +7,14 @@ export const game = (() => {
 
   const setQuizData = (data) => (quizData = data);
 
-  const getRoundQuizData = () => quizData[round];
+  const getRoundQuizData = () => {
+    const options = [
+      ...quizData[round].incorrect_answers,
+      quizData[round].correct_answer,
+    ];
+    const sortedOptions = sortArray(options);
+    return { ...quizData[round], options: sortedOptions };
+  };
 
   const getRound = () => round;
   const setRound = (rd = 0) => (round = rd);
