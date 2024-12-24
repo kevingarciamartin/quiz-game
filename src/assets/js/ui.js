@@ -49,7 +49,6 @@ export const ui = (() => {
     renderTitleScreen,
     renderGame,
     renderRound,
-    renderRound,
     renderResults,
   };
 })();
