@@ -10,6 +10,11 @@ export const ui = (() => {
   );
   const question = document.querySelector("#question");
   const options = document.querySelectorAll(".option");
+  const progressBarElements = document.querySelectorAll(
+    ".progress-bar-element"
+  );
+  const question = document.querySelector("#question");
+  const options = document.querySelectorAll(".option");
 
   const renderTitleScreen = () => {
     titleScreen.style.display = "flex";
@@ -48,6 +53,7 @@ export const ui = (() => {
   return {
     renderTitleScreen,
     renderGame,
+    renderRound,
     renderRound,
     renderResults,
   };
