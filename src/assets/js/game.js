@@ -4,6 +4,13 @@ export const game = (() => {
   let quizData = [];
   let round = 0;
   let points = 0;
+  const maxRounds = 10;
+
+  const initGame = (data) => {
+    setQuizData(data);
+    setRound();
+    setPoints();
+  };
 
   const setQuizData = (data) => (quizData = data);
 
@@ -16,6 +23,8 @@ export const game = (() => {
     return { ...quizData[round], options: sortedOptions };
   };
 
+  const getCorrectAnswer = () => quizData[round].correct_answer;
+
   const getRound = () => round;
   const setRound = (rd = 0) => (round = rd);
   const increaseRound = () => round++;
@@ -24,14 +33,16 @@ export const game = (() => {
   const setPoints = (pts = 0) => (points = pts);
   const increasePoints = () => points++;
 
+  const isFinished = () => round + 1 === maxRounds;
+
   return {
-    setQuizData,
+    initGame,
     getRoundQuizData,
+    getCorrectAnswer,
     getRound,
-    setRound,
     increaseRound,
     getPoints,
-    setPoints,
     increasePoints,
+    isFinished,
   };
 })();

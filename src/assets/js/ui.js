@@ -8,6 +8,7 @@ export const ui = (() => {
   const progressBarElements = document.querySelectorAll(
     ".progress-bar-element"
   );
+  const nextQuestion = document.querySelector("#next-question");
   const question = document.querySelector("#question");
   const options = document.querySelectorAll(".option");
 
@@ -36,7 +37,47 @@ export const ui = (() => {
     for (let i = 0; i < options.length; i++) {
       const quizOption = replaceHTMLCharacters(data.options[i]);
       options[i].textContent = quizOption;
+      resetOption(options[i]);
     }
+
+    disableNextQuestion();
+    enableOptions();
+  };
+
+  const enableOptions = () => {
+    options.forEach((option) => (option.disabled = false));
+  };
+
+  const disableOptions = () => {
+    options.forEach((option) => (option.disabled = true));
+  };
+
+  const renderCorrectOption = (
+    isCorrect,
+    selectedButton,
+    correctButton = null
+  ) => {
+    selectedButton.classList.add("selected");
+    isCorrect
+      ? selectedButton.classList.add("correct")
+      : selectedButton.classList.add("incorrect");
+    if (correctButton !== null) correctButton.classList.add("correct");
+  };
+
+  const resetOption = (option) => {
+    option.classList.remove("selected");
+    option.classList.remove("correct");
+    option.classList.remove("incorrect");
+  };
+
+  const enableNextQuestion = () => (nextQuestion.disabled = false);
+
+  const disableNextQuestion = () => (nextQuestion.disabled = true);
+
+  const updateProgressBar = (round, isCorrect) => {
+    isCorrect
+      ? progressBarElements[round].classList.add("correct")
+      : progressBarElements[round].classList.add("incorrect");
   };
 
   const renderResults = () => {
@@ -49,6 +90,12 @@ export const ui = (() => {
     renderTitleScreen,
     renderGame,
     renderRound,
+    enableOptions,
+    disableOptions,
+    renderCorrectOption,
+    enableNextQuestion,
+    disableNextQuestion,
+    updateProgressBar,
     renderResults,
   };
 })();
