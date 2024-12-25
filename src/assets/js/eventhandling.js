@@ -15,7 +15,7 @@ export const eventhandling = (() => {
         ui.renderRound(game.getRoundQuizData());
       } else if (button.id === "next-question") {
         if (game.isFinished()) {
-          ui.renderResults();
+          ui.renderResults(game.getPoints(), game.getRound() + 1);
         } else {
           game.increaseRound();
           ui.renderRound(game.getRoundQuizData());

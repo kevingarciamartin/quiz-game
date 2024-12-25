@@ -11,6 +11,8 @@ export const ui = (() => {
   const nextQuestion = document.querySelector("#next-question");
   const question = document.querySelector("#question");
   const options = document.querySelectorAll(".option");
+  const points = document.querySelector("#points");
+  const rounds = document.querySelector("#rounds");
 
   const renderTitleScreen = () => {
     titleScreen.style.display = "flex";
@@ -80,10 +82,17 @@ export const ui = (() => {
       : progressBarElements[round].classList.add("incorrect");
   };
 
-  const renderResults = () => {
+  const renderResults = (points, rounds) => {
     titleScreen.style.display = "none";
     game.style.display = "none";
-    results.style.display = "block";
+    results.style.display = "flex";
+
+    renderScore(points, rounds)
+  };
+
+  const renderScore = (pts, rds) => {
+    points.textContent = pts;
+    rounds.textContent = rds;
   };
 
   return {
