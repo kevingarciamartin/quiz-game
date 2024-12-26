@@ -202,4 +202,26 @@ main {
   #score {
     font-size: 3rem;
   }
+
+  nav ul {
+    display: flex;
+    gap: 1rem;
+
+    list-style: none;
+    padding: 0;
+
+    button {
+      background-color: var(--clr-accent);
+      border: 1px solid var(--clr-border);
+      border-radius: 1rem;
+      padding: 1rem;
+      width: 100%;
+      transition: background-color 200ms ease;
+
+      &:hover,
+      &:focus-visible {
+        background-color: var(--clr-yellow);
+      }
+    }
+  }
 }

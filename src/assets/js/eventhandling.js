@@ -7,7 +7,7 @@ export const eventhandling = (() => {
 
   buttons.forEach((button) => {
     button.addEventListener("click", async () => {
-      if (button.id === "play") {
+      if (button.id === "play" || button.id === "play-again") {
         const data = await api.getQuizData();
         console.log(data.results);
         game.initGame(data.results);
@@ -20,7 +20,7 @@ export const eventhandling = (() => {
           game.increaseRound();
           ui.renderRound(game.getRoundQuizData());
         }
-      } else if (button.classList.contains("quit-game")) {
+      } else if (button.id === "quit-game" || button.id === "exit-game") {
         ui.renderTitleScreen();
       } else if (button.classList.contains("option")) {
         const correctAnswer = game.getCorrectAnswer();
