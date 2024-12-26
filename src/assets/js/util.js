@@ -19,5 +19,8 @@ export function replaceHTMLCharacters(string) {
   string = string.replaceAll("&amp;", "&");
   string = string.replaceAll("&rsquo;", "’");
   string = string.replaceAll("&ldquo;", "“");
+  string = string.replaceAll("&lrm;", "");
+  string = string.replaceAll("&uuml;", "ü");
+  string = string.replaceAll("&ouml;", "ö");
   return string;
 }
