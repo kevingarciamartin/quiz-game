@@ -8,8 +8,16 @@ export const eventhandling = (() => {
   buttons.forEach((button) => {
     button.addEventListener("click", async () => {
       if (button.id === "play" || button.id === "play-again") {
-        const data = await api.getQuizData();
-        console.log(data.results);
+        ui.addButtonLoadingAnimation(button);
+
+        let data;
+        do {
+          data = await api.getQuizData();
+          console.log(data);
+        } while (data.response_code !== 0);
+
+        ui.removeButtonLoadingAnimation(button, 'Play');
+
         game.initGame(data.results);
         ui.renderGame();
         ui.renderRound(game.getRoundQuizData());
@@ -20,7 +28,11 @@ export const eventhandling = (() => {
           game.increaseRound();
           ui.renderRound(game.getRoundQuizData());
         }
-      } else if (button.id === "quit-game" || button.id === "exit-game") {
+      } else if (
+        button.id === "quit-game" ||
+        button.id === "exit-game" ||
+        button.id === "back-to-title-screen"
+      ) {
         ui.renderTitleScreen();
       } else if (button.classList.contains("option")) {
         const correctAnswer = game.getCorrectAnswer();

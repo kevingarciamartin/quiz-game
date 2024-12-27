@@ -4,6 +4,7 @@ export const ui = (() => {
   const titleScreen = document.querySelector("#title-screen");
   const game = document.querySelector("#game");
   const results = document.querySelector("#results");
+  const error = document.querySelector("#error");
   const title = document.querySelector("h1");
   const progressBarElements = document.querySelectorAll(
     ".progress-bar-element"
@@ -13,11 +14,13 @@ export const ui = (() => {
   const options = document.querySelectorAll(".option");
   const points = document.querySelector("#points");
   const rounds = document.querySelector("#rounds");
+  const errorMessage = document.querySelector("#error-message");
 
   const renderTitleScreen = () => {
     titleScreen.style.display = "flex";
     game.style.display = "none";
     results.style.display = "none";
+    error.style.display = "none";
     title.style.fontSize = "4rem";
   };
 
@@ -25,6 +28,7 @@ export const ui = (() => {
     titleScreen.style.display = "none";
     game.style.display = "flex";
     results.style.display = "none";
+    error.style.display = "none";
     title.style.fontSize = "clamp(2rem, 3vw + 0.5rem, 5rem)";
     progressBarElements.forEach((element) => {
       element.classList.remove("correct");
@@ -86,13 +90,33 @@ export const ui = (() => {
     titleScreen.style.display = "none";
     game.style.display = "none";
     results.style.display = "flex";
+    error.style.display = "none";
 
-    renderScore(points, rounds)
+    renderScore(points, rounds);
   };
 
   const renderScore = (pts, rds) => {
     points.textContent = pts;
     rounds.textContent = rds;
+  };
+
+  const renderError = (message) => {
+    titleScreen.style.display = "none";
+    game.style.display = "none";
+    results.style.display = "none";
+    error.style.display = "flex";
+
+    errorMessage.textContent = message;
+  };
+
+  const addButtonLoadingAnimation = (button) => {
+    button.textContent = "";
+    button.classList.add("loading");
+  };
+
+  const removeButtonLoadingAnimation = (button, buttonText) => {
+    button.textContent = buttonText;
+    button.classList.remove("loading");
   };
 
   return {
@@ -106,5 +130,8 @@ export const ui = (() => {
     disableNextQuestion,
     updateProgressBar,
     renderResults,
+    renderError,
+    addButtonLoadingAnimation,
+    removeButtonLoadingAnimation,
   };
 })();
